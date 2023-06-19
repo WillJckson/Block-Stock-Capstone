@@ -6,7 +6,7 @@ export const NavBar = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                <Link to="/">Home</Link>
+                <Link to="/home">Home</Link>
             </li>
             <li className="navbar__item">
                 <Link to="/sets">Lego Sets</Link>
@@ -14,7 +14,7 @@ export const NavBar = () => {
             {
                 localStorage.getItem("lego_user")
                     ? <li className="navbar__item navbar__logout">
-                        <Link className="navbar__link" to="" onClick={() => {
+                        <Link className="navbar__link" to ="" onClick={() => {
                             localStorage.removeItem("lego_user")
                             navigate("/", {replace: true})
                         }}>Logout</Link>
@@ -24,7 +24,6 @@ export const NavBar = () => {
         </ul>
     );
 };
-
 // import { Link, useNavigate } from "react-router-dom"
 // import "./NavBar.css"
 
