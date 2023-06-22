@@ -6,6 +6,7 @@ import { HomePage } from "../home/HomePage";
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import { SetView } from "../sets/SetViews";
+import { LegoSetForm } from "../sets/NewSetForm";
 
 export const ApplicationViews = () => {
     return (
@@ -16,6 +17,7 @@ export const ApplicationViews = () => {
             <Route path="/sets" element={<AllSetsPage />} />
             <Route path="/owned-sets" element={<OwnedSetsPage />} />
             <Route path="/set/:id" element={<SetView />} />
+            <Route path="/set/create" element={<LegoSetForm />} />
         </Routes>
     );
 };

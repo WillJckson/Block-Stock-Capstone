@@ -75,29 +75,3 @@ export const OwnedSetsPage = () => {
         </div>
     );
 };
-
-// import React, { useEffect, useState } from "react";
-
-// export const OwnedSetsPage = () => {
-//     const [ownedSets, setOwnedSets] = useState([]);
-
-//     useEffect(() => {
-//         // Fetch user's owned Lego sets from API
-//         const userId = localStorage.getItem("lego_user");
-//         fetch(`http://localhost:8088/owned-sets`)
-//             .then((response) => response.json())
-//             .then((data) => setOwnedSets(data));
-//     }, []);
-
-//     return (
-//         <div>
-//             <h2>My Owned Lego Sets</h2>
-//             {ownedSets.map((set) => (
-//                 <div key={set.id}>
-//                     <h3>{set.name}</h3>
-//                     {/* Display other details of the set */}
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// };
