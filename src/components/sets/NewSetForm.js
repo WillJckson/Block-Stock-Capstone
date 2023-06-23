@@ -46,9 +46,6 @@ export const LegoSetForm = () => {
                 const defaultThemeId = themes[0]?.id || ""; // Default to the first theme if available
                 update((prevSet) => ({ ...prevSet, themeId: defaultThemeId }));
             })
-            .catch((error) => {
-                console.log("Error fetching themes:", error);
-            });
     }, []);
 
     return (

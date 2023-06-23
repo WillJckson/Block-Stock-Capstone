@@ -27,14 +27,10 @@ export const AllSetsPage = () => {
     return (
         <>
             <h2>All Lego Sets</h2>
-            <button onClick={toggleOwnedOnly}>
-                {ownedOnly ? "All Sets" : "Owned Sets"}
-            </button>
             <article className="LegoSets">
                 {filteredSets.map((set) => (
                     <section className="set" key={`set--${set.id}`}>
                         <header>{set.name}</header>
-                        <footer>Owned: {set.owned ? "Yes" : "No"}</footer>
                         <Link to={`/set/${set.id}`}>View Set</Link>
                     </section>
                 ))}

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const SetView = () => {
+
+    const navigate = useNavigate()
     // Retrieve the 'id' parameter from the URL
     const { id } = useParams();
 
@@ -10,21 +13,14 @@ export const SetView = () => {
     const [theme, setTheme] = useState(null);
     const [themes, setThemes] = useState([]);
 
+    const fetchSet = async () => {
+        fetch(`http://localhost:8088/LegoSets/${id}`)
+            .then(response => response.json())
+            .then((setArr) => {
+                setSet(setArr)
+            })
+    }
     useEffect(() => {
-        // Function to fetch the set data based on the 'id' parameter
-        const fetchSet = async () => {
-            try {
-                const response = await fetch(`http://localhost:8088/LegoSets/${id}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setSet(data);
-                } else {
-                    throw new Error("Failed to fetch set");
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
 
         // Function to fetch the themes list
         const fetchThemes = async () => {
@@ -37,7 +33,6 @@ export const SetView = () => {
                     throw new Error("Failed to fetch themes");
                 }
             } catch (error) {
-                console.log(error);
             }
         };
 
@@ -45,6 +40,15 @@ export const SetView = () => {
         fetchSet();
         fetchThemes();
     }, [id]);
+
+    const deleteButton = () => {
+        fetch(`http://localhost:8088/LegoSets/${id}`, {
+            method: "DELETE",
+        })
+            .then(() => {
+                navigate("/sets"); // Navigate back to the "/sets" page
+            })
+    };
 
     useEffect(() => {
         // Update the theme when the 'themes' or 'set' state changes
@@ -58,13 +62,13 @@ export const SetView = () => {
         // Display a loading message while the data is being fetched
         return <div>Loading...</div>;
     }
-
     return (
         <div>
             <h2>Set Details</h2>
-            <div>Name: {set.name}</div>
+            <Link to={`/set/edit/${set.id}`}>Name: {set.name}</Link>
             <div>Piece Count: {set.piecesCount}</div>
             <div>Theme: {theme}</div>
+            <button onClick={() => deleteButton(set.id)}>Delete</button>
         </div>
     );
 };
