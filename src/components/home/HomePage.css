@@ -4,7 +4,7 @@
     background-image: url("https://d34urnl45u363e.cloudfront.net/store/mediaobject/897/image/large-5cc65cd31253d62801828433528ca7e3.png");
     background-size: cover;
     background-position: center;
-    min-height: 100vh; /* Set a minimum height to cover the whole page */
+    min-height: 85vh; /* Set a minimum height to cover the whole page */
     display: flex;
     justify-content: center;
     align-items: center;
