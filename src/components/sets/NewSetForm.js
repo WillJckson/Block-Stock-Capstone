@@ -108,27 +108,47 @@ export const LegoSetForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-            <div className="form-group">
-                <label htmlFor="imgUrl">imgUrl:</label>
-                <textarea
-                    required autoFocus
-                    type="text"
-                    placeholder="Image address"
-                    className="form-control"
-                    value={set?.imgUrl}
-                    onChange={
-                        (evt) => {
-                            const copy = { ...set }
-                            copy.imgUrl = evt.target.value
-                            update(copy)
-                        }
-                    }>{set?.imgUrl}</textarea>
-            </div>
+                <div className="form-group">
+                    <label htmlFor="imgUrl">imgUrl:</label>
+                    <textarea
+                        required autoFocus
+                        type="text"
+                        placeholder="Image address"
+                        className="form-control"
+                        value={set?.imgUrl}
+                        onChange={
+                            (evt) => {
+                                const copy = { ...set }
+                                copy.imgUrl = evt.target.value
+                                update(copy)
+                            }
+                        }>{set?.imgUrl}</textarea>
+                </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="theme">Set Theme:</label>
                     <select
+                        id="themeDropdown"
+                        value={set.themeId}
+                        onChange={(evt) => {
+                            update((prevSet) => ({
+                                ...prevSet,
+                                themeId: parseInt(evt.target.value)
+                            }));
+                        }}
+                    >
+                        <option value="">Select Theme</option> {"select a theme"}
+                        {themes.map((theme) => (
+                            <option key={theme.id} value={theme.id}>
+                                {theme.theme}
+                            </option>
+                        ))}
+                    </select>
+
+
+
+                    {/* <select
                         id="themeDropdown"
                         value={set.themeId}
                         onChange={(evt) => {
@@ -142,7 +162,7 @@ export const LegoSetForm = () => {
                                 {theme.theme}
                             </option>
                         ))}
-                    </select>
+                    </select> */}
                 </div>
             </fieldset>
             <button

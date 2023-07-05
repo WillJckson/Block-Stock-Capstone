@@ -69,28 +69,43 @@ export const SetEdit = () => {
             </div>
         </fieldset>
         <fieldset>
-                <div className="form-group">
-                    <label htmlFor="serialNumber">Serial Number:</label>
-                    <input
-                        required
-                        autoFocus
-                        type="number"
-                        min="1"
-                        className="form-control"
-                        placeholder="Serial number on the set"
-                        value={set.serialNumber}
-                        onChange={(evt) => {
-                            const copy = { ...set };
-                            copy.serialNumber = evt.target.value;
-                            assignSet(copy);
-                        }}
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="piecesCount">Number of Pieces:</label>
-                    <input
+            <div className="form-group">
+                <label htmlFor="serialNumber">Serial Number:</label>
+                <input
+                    required
+                    autoFocus
+                    type="number"
+                    min="1"
+                    className="form-control"
+                    placeholder="Serial number on the set"
+                    value={set.serialNumber}
+                    onChange={(evt) => {
+                        const copy = { ...set };
+                        copy.serialNumber = evt.target.value;
+                        assignSet(copy);
+                    }}
+                />
+            </div>
+        </fieldset>
+        <fieldset>
+            <div className="form-group">
+                <label htmlFor="piecesCount">Number of Pieces:</label>
+                <input
+                    required
+                    autoFocus
+                    type="number"
+                    min="1"
+                    className="form-control"
+                    placeholder="How many pieces are in the set"
+                    value={set.piecesCount}
+                    onChange={(evt) => {
+                        assignSet(prevSet => ({
+                            ...prevSet,
+                            piecesCount: evt.target.value
+                        }));
+                    }}
+                />
+                {/* <input
                         required
                         autoFocus
                         type="number"
@@ -100,13 +115,13 @@ export const SetEdit = () => {
                         value={set.piecesCount}
                         onChange={(evt) => {
                             const copy = { ...set };
-                            copy.piecesCount = evt.target.value;
+                            copy.piecesCount = parseInt(evt.target.value);
                             assignSet(copy);
                         }}
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
+                    /> */}
+            </div>
+        </fieldset>
+        <fieldset>
             <div className="form-group">
                 <label htmlFor="imgUrl">imgUrl:</label>
                 <textarea
