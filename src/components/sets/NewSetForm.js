@@ -6,7 +6,8 @@ export const LegoSetForm = () => {
         serialNumber: 0,
         name: "",
         piecesCount: 0,
-        themeId: 0
+        themeId: 0,
+        imgUrl: ""
     });
     const [themes, setThemes] = useState([])
     const navigate = useNavigate();
@@ -22,7 +23,8 @@ export const LegoSetForm = () => {
             name: set.name,
             serialNumber: set.serialNumber,
             piecesCount: set.piecesCount,
-            themeId: parseInt(set.themeId)
+            themeId: parseInt(set.themeId),
+            imgUrl: set.imgUrl
         };
 
         return fetch("http://localhost:8088/LegoSets", {
@@ -43,8 +45,6 @@ export const LegoSetForm = () => {
             .then((response) => response.json())
             .then((themes) => {
                 setThemes(themes)
-                const defaultThemeId = themes[0]?.id || ""; // Default to the first theme if available
-                update((prevSet) => ({ ...prevSet, themeId: defaultThemeId }));
             })
     }, []);
 
@@ -106,6 +106,24 @@ export const LegoSetForm = () => {
                         }}
                     />
                 </div>
+            </fieldset>
+            <fieldset>
+            <div className="form-group">
+                <label htmlFor="imgUrl">imgUrl:</label>
+                <textarea
+                    required autoFocus
+                    type="text"
+                    placeholder="Image address"
+                    className="form-control"
+                    value={set?.imgUrl}
+                    onChange={
+                        (evt) => {
+                            const copy = { ...set }
+                            copy.imgUrl = evt.target.value
+                            update(copy)
+                        }
+                    }>{set?.imgUrl}</textarea>
+            </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
