@@ -1,14 +1,15 @@
-
 /* sets.css */
+
 .LegoSets {
     display: flex;
     flex-wrap: wrap;
-    align-items: center; /* Align items along the cross axis (horizontal centering) */
+    justify-content: center;
+    /* Center the sets horizontally */
 }
 
 .set {
-    flex: 0 0 200px; /* Set a fixed width for each set */
-    margin: 10px; /* Add margin between the sets */
+    flex: 0 0 200px;
+    margin: 10px;
     background-color: #ffffff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -21,12 +22,15 @@
 }
 
 .set-view-image {
-    width: 200px; /* Adjust the width as needed */
-    height: auto; /* Maintain the aspect ratio */
+    width: 150px;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Maintain the aspect ratio */
 }
 
 .set img {
-    width: 150px; /* Adjust the image size if needed */
+    width: 150px;
+    /* Adjust the image size if needed */
     height: 150px;
     object-fit: cover;
 }
@@ -45,7 +49,8 @@
 
 .view-set-link {
     display: block;
-    margin-top: 10px; /* Add margin-top to create spacing between image and link */
+    margin-top: 10px;
+    /* Add margin-top to create spacing between image and link */
     padding: 8px 16px;
     font-size: 16px;
     color: #ffffff;
@@ -61,17 +66,22 @@
 
 #set-view {
     text-align: center;
+    margin-top: 20px;
+    /* Add margin-top to space out the set view */
+    margin-bottom: 20px;
+    /* Add margin-bottom to space out the set view */
 }
 
 .set-view-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    /* Increase margin-bottom to space out the set view more */
 }
 
 .set-view-image {
-    width: 550px;
+    width: 473px;
     height: auto;
     object-fit: cover;
     border-radius: 5px;
@@ -84,22 +94,35 @@
 
 .set-view-info {
     display: flex;
-    margin-bottom: 10px;
+    flex-direction: column;
+    /* Change flex-direction to column */
+    align-items: center;
+    /* Center align the content horizontally */
+    margin-bottom: 20px;
 }
 
 .set-view-label {
     font-weight: bold;
     margin-right: 5px;
+    color: #333333; /* Set the label text color to match the theme */
+    font-family: "Arial", sans-serif; /* Set the font family for the label */
 }
 
 .set-view-value {
     font-weight: normal;
+    color: #888888; /* Set the value text color to match the theme */
+    font-family: "Arial", sans-serif; /* Set the font family for the value */
 }
+
 
 .set-view-buttons {
     display: flex;
-    justify-content: center;
+    flex-direction: column-reverse;
+    /* Change flex-direction to column */
+    align-items: center;
+    /* Center align the content horizontally */
 }
+
 
 button {
     margin: 0 10px;
@@ -114,7 +137,8 @@ button {
 }
 
 button:hover {
-    background-color: #b30000;
+    background-color: #000000;
+    color: white
 }
 
 button:focus {
@@ -131,4 +155,5 @@ h2 {
     font-weight: bold;
     margin-bottom: 20px;
     color: #333333;
+    text-align: center;
 }
